@@ -5,12 +5,42 @@ import app.Perceptron;
 import java.util.Arrays;
 
 public class PerceptronRunner {
-    private static double[][][] baseE = new double[][][]{
-            {{0,0},{0}},
-            {{0,1},{0}},
-            {{1,0},{0}},
-            {{1,1},{1}},
+
+    //base E
+//    private static double[][][] base = new double[][][]{
+//            {{0,0},{0}},
+//            {{0,1},{0}},
+//            {{1,0},{0}},
+//            {{1,1},{1}},
+//    };
+
+    // base Xor
+    private static final double[][][] base = {
+            { {0,0}, {0} },
+            { {0,1}, {1} },
+            { {1,0}, {1} },
+            { {1,1}, {0} }
     };
+
+    // base Or
+//    private static final double[][][] base = {
+//            { { 0, 0}, {0} },
+//            { { 0, 1}, { 1} },
+//            { { 1, 0 }, { 1} },
+//            { { 1, 1 }, { 1} }
+//    };
+
+    //Robo
+//    private static final double[][][] base = {
+//            { { 0, 0, 0 }, { 1, 1 } },
+//            { { 0, 0, 1 }, { 0, 1 } },
+//            { { 0, 1, 0 }, { 1, 0 } },
+//            { { 0, 1, 1},  { 0, 1 } },
+//            { { 1, 0, 0 }, { 1, 0 } },
+//            { { 1, 0, 1 }, { 1, 0 } },
+//            { { 1, 1, 0 }, { 1, 0 } },
+//            { { 1, 1, 1 }, { 1, 0 } }
+//    };
 
     public static void main(String[] args) {
         
@@ -27,9 +57,9 @@ public class PerceptronRunner {
         for (int e = 0; e < EPOCA; e++) {
             erroEp = 0;
 
-            for (int a = 0; a < baseE.length; a++) {
-                double[] x = baseE[a][0];
-                double[] y = baseE[a][1];
+            for (int a = 0; a < base.length; a++) {
+                double[] x = base[a][0];
+                double[] y = base[a][1];
                 double[] out = p.learn(x,y);
                 erroAm = somador(y,out);
                 erroEp += erroAm;
